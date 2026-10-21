@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rutin Malam - My Little Stars</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1efff;
+      color: #51466b;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 25px;
+      box-shadow: 0 5px 20px #d9d1f0;
+    }
+
+    h1 {
+      color: #8c78c5;
+    }
+
+    .task {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+      padding: 14px;
+      margin: 10px 0;
+      background: #f3f0ff;
+      border-radius: 15px;
+      font-size: 17px;
+    }
+
+    .task input {
+      width: 22px;
+      height: 22px;
+      accent-color: #8c78c5;
+    }
+
+    .task .speak-button {
+    margin: 0 0 0 auto;
+    padding: 8px;
+    min-width: 42px;
+    min-height: 42px;
+    border-radius: 12px;
+    background: #f0e5ff;
+    color: #7656a6;
+    font-size: 20px;
+    flex-shrink: 0;
+    }
+
+    button {
+      background: #8c78c5;
+      color: white;
+      border: none;
+      padding: 13px 22px;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+    
+<button
+  type="button"
+  onclick="
+    sessionStorage.removeItem('myLittleStarsReturnToChildMenu');
+    window.location.href='../index.html';
+  "
+  aria-label="Home Page"
+  title="Home Page"
+  style="
+    display:block;
+    width:44px;
+    height:44px;
+    min-height:44px;
+    padding:8px;
+    margin:10px 0 20px;
+    background:#f0e5ff;
+    color:#7656a6;
+    border:1px solid #dfcdf6;
+    border-radius:14px;
+    font-size:22px;
+    cursor:pointer;
+  ">
+  🏠
+</button>
+
+  <div class="container">
+    <h1>🌙 Rutin Malam</h1>
+    <p>Jom bersedia untuk tidur dengan tenang!</p>
+    
+    <div class="task">
+    <input type="checkbox" class="routine" id="task1">
+    <label for="task1">🍽️ Makan malam</label>
+    <button type="button" class="speak-button" data-speak="Makan malam" aria-label="Dengar arahan">🔊</button>
+    </div>
+
+    <div class="task">
+    <input type="checkbox" class="routine" id="task2">
+    <label for="task2">🧸 Kemas permainan</label>
+    <button type="button" class="speak-button" data-speak="Kemas permainan" aria-label="Dengar arahan">🔊</button>
+    </div>
+
+    <div class="task">
+    <input type="checkbox" class="routine" id="task3">
+    <label for="task3">🛁 Mandi dan bersihkan diri</label>
+    <button type="button" class="speak-button" data-speak="Mandi dan bersihkan diri" aria-label="Dengar arahan">🔊</button>
+    </div>
+
+    <div class="task">
+    <input type="checkbox" class="routine" id="task4">
+    <label for="task4">🪥 Gosok gigi</label>
+    <button type="button" class="speak-button" data-speak="Gosok gigi" aria-label="Dengar arahan">🔊</button>
+    </div>
+
+    <div class="task">
+    <input type="checkbox" class="routine" id="task5">
+    <label for="task5">📖 Baca buku sebelum tidur</label>
+    <button type="button" class="speak-button" data-speak="Baca buku sebelum tidur" aria-label="Dengar arahan">🔊</button>
+    </div>
+
+
+    <p id="result">⭐ Bintang: 0 / 5</p>
+
+    <button onclick="history.back()">⬅️ Kembali</button>
+  </div>
+
+  
+<script>
+  const activeChildId = localStorage.getItem("myLittleStarsActiveChild");
+
+  const savedChildren = JSON.parse(
+    localStorage.getItem("myLittleStarsChildren") || "[]"
+  );
+
+  const activeChild = savedChildren.find(function(child) {
+    return child.id === activeChildId;
+  });
+
+  if (!activeChild) {
+    alert("Sila pilih profil anak dahulu.");
+    window.location.href = "../index.html";
+  } else {
+    const welcome = document.createElement("p");
+    welcome.textContent = "⭐ Rutin untuk " + activeChild.name;
+    welcome.style.fontWeight = "bold";
+    welcome.style.fontSize = "18px";
+    document.querySelector(".container").prepend(welcome);
+  }
+
+  const checkboxes = document.querySelectorAll(".routine");
+  const result = document.getElementById("result");
+
+  const storageKey = activeChild
+    ? "myLittleStars_rutinMalam_" + activeChild.id
+    : "";
+
+  function loadProgress() {
+    if (!activeChild) return;
+
+    try {
+      const saved = JSON.parse(
+        localStorage.getItem(storageKey) || "[]"
+      );
+
+      checkboxes.forEach(function(box, index) {
+        box.checked = saved[index] === true;
+      });
+    } catch (error) {
+      console.log("Rekod rutin tidak dapat dibaca.");
+    }
+
+    updateStars();
+  }
+
+  function updateStars() {
+    let total = 0;
+
+    checkboxes.forEach(function(box) {
+      if (box.checked) total++;
+    });
+
+    result.textContent =
+      "⭐ Bintang: " + total + " / " + checkboxes.length;
+
+    if (activeChild) {
+      const progress = Array.from(checkboxes).map(function(box) {
+        return box.checked;
+      });
+
+      localStorage.setItem(storageKey, JSON.stringify(progress));
+    }
+  }
+
+  checkboxes.forEach(function(box) {
+    box.addEventListener("change", updateStars);
+  });
+
+  loadProgress();
+  
+document.querySelectorAll(".speak-button").forEach(function(button) {
+  button.addEventListener("click", function() {
+    const text = button.dataset.speak;
+
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+
+      const speech = new SpeechSynthesisUtterance(text);
+      speech.lang = "ms-MY";
+      speech.rate = 0.85;
+
+      window.speechSynthesis.speak(speech);
+    } else {
+      alert("Maaf, fungsi suara tidak disokong oleh peranti ini.");
+    }
+  });
+});
+</script>
+</body>
+</html>
