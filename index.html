@@ -1,0 +1,1024 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Little Stars</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #fff0f6 0%,
+        #f1eaff 35%,
+        #e8f7ff 70%,
+        #fff6df 100%
+    );
+    background-attachment: fixed;
+    color: #59445b;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 25px auto;
+      padding: 25px;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 5px 20px #e8cddd;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #d779a5;
+    }
+
+    .subtitle {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 13px;
+      margin-top: 7px;
+      border: 1px solid #e8cddd;
+      border-radius: 12px;
+      font-size: 16px;
+      background: #fffafd;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 18px;
+      border: none;
+      border-radius: 15px;
+      background: #d779a5;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .profile {
+      padding: 18px;
+      margin-top: 15px;
+      border-radius: 18px;
+      background: #fff0f5;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .avatar {
+      font-size: 45px;
+    }
+
+    .profile p {
+      margin-bottom: 0;
+    }
+
+    .delete-button {
+      background: #b85b75;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #message {
+      text-align: center;
+      color: #b04f80;
+      margin-top: 15px;
+    }
+    
+/* ===== My Little Stars: Reka Bentuk Mesra Telefon ===== */
+
+body {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background: linear-gradient(135deg, #fff5fa, #f0f4ff);
+  color: #4b4260;
+  margin: 0;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+h1, h2, h3 {
+  color: #7656a6;
+  line-height: 1.4;
+}
+
+h1 {
+  background: linear-gradient(
+    90deg,
+    #ff8fab,
+    #ffb86c,
+    #f6d365,
+    #8bd3a8,
+    #78c7e8,
+    #b49bff
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 32px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.5px;
+  filter: drop-shadow(0 3px 2px #7656a620);
+}
+
+button {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 13px 18px;
+  min-height: 48px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+input, select {
+  max-width: 100%;
+  min-height: 46px;
+  padding: 12px;
+  border: 2px solid #eadff7;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.profiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+
+.profile {
+  border-radius: 24px;
+  padding: 18px;
+  background: linear-gradient(135deg, #fff8fc, #f2f0ff, #effaff);
+  border: 2px solid #ffffff;
+  box-shadow: 0 5px 16px #7656a620;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 9px 20px #7656a630;
+}
+
+.profile.active {
+  border: 2px solid #b49bff;
+  background: linear-gradient(135deg, #ffe8f1, #eee7ff, #e4f8ff);
+  box-shadow: 0 5px 18px #b49bff45;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  h2 {
+    font-size: 21px;
+  }
+
+  button {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  input, select {
+    width: 100%;
+  }
+
+  .profiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ===== Butang Menu My Little Stars ===== */
+
+#categorySection button {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 12px auto;
+  padding: 16px;
+  background: #ffffff;
+  color: #7656a6;
+  border: 2px solid #eee3fa;
+  border-radius: 18px;
+  box-shadow: 0 4px 10px #7656a610;
+  text-align: left;
+}
+
+#categorySection button:hover {
+  background: #f5edff;
+  border-color: #d9c2f5;
+}
+
+#categorySection button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  #categorySection button {
+    max-width: 100%;
+    min-height: 56px;
+    font-size: 16px;
+  }
+}
+
+/* ===== Susun Atur Profil Anak ===== */
+
+#profiles {
+  max-width: 760px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 6px 22px #7656a615;
+}
+
+#profiles h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#profileList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+#profileList > * {
+  min-width: 0;
+}
+
+.register-action {
+  text-align: center;
+  margin: 14px auto 24px;
+}
+
+#showRegistrationButton {
+  min-height: 42px;
+  padding: 10px 18px;
+  background: #f0e5ff;
+  color: #7656a6;
+  border: 1px solid #dfcdf6;
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+.registration-panel {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 22px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 6px 22px #7656a615;
+}
+
+@media (max-width: 420px) {
+  #profiles {
+    padding: 12px;
+  }
+
+  #profileList {
+    gap: 10px;
+  }
+
+  #profileList button {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Sembunyikan butang Padam Profil */
+.delete-button {
+  display: none !important;
+}
+
+/* Kad profil anak */
+#profileList .profile {
+  width: 100%;
+  min-height: 125px;
+  padding: 16px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(145deg, #ffffff, #f8f0ff);
+  border: 2px solid #eadcf8;
+  border-radius: 22px;
+  box-shadow: 0 5px 14px #7656a615;
+  text-align: center;
+}
+
+#profileList .profile strong {
+  color: #7656a6;
+  font-size: 17px;
+}
+
+#profileList .profile .avatar {
+  font-size: 38px;
+}
+
+#profileList .profile.active {
+  background: linear-gradient(145deg, #f0e5ff, #fff0f7);
+  border-color: #b99bdf;
+  box-shadow: 0 5px 16px #a88acb35;
+}
+
+@media (max-width: 420px) {
+  #profileList .profile {
+    min-height: 115px;
+    padding: 12px 6px;
+  }
+
+  #profileList .profile strong {
+    font-size: 15px;
+  }
+
+  #profileList .profile .avatar {
+    font-size: 32px;
+  }
+}
+
+/* ===== Menu Rutin Anak ===== */
+
+#categories {
+  max-width: 760px;
+  margin: 20px auto;
+  padding: 22px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 6px 22px #7656a615;
+}
+
+#categories h2,
+#categories .subtitle {
+  text-align: center;
+}
+
+#categories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+#categories h2,
+#categories .subtitle,
+#categories #rewardsButton {
+  grid-column: 1 / -1;
+}
+
+#categories button[data-page] {
+  width: 100%;
+  min-height: 100px;
+  margin: 0;
+  padding: 16px 10px;
+  background: #f5edff;
+  color: #7656a6;
+  border: 2px solid #e7d9f7;
+  border-radius: 20px;
+  text-align: center;
+  white-space: normal;
+}
+
+#categories button[data-page]:nth-of-type(2) {
+  background: #e9f5ff;
+  border-color: #d2e8fa;
+}
+
+#categories button[data-page]:nth-of-type(3) {
+  background: #fff0e5;
+  border-color: #f8dfca;
+}
+
+#categories button[data-page]:nth-of-type(4) {
+  background: #e9f8ed;
+  border-color: #d2ecd9;
+}
+
+#categories #rewardsButton {
+  width: 100%;
+  margin: 8px 0 0;
+  background: #fff2c9;
+  color: #806323;
+  border: 2px solid #f4e2a6;
+  border-radius: 16px;
+}
+
+@media (max-width: 420px) {
+  #categories {
+    padding: 14px;
+    gap: 9px;
+  }
+
+  #categories button[data-page] {
+    min-height: 90px;
+    font-size: 14px;
+    padding: 10px 6px;
+  }
+}
+
+/* Menu rutin hanya dipaparkan selepas profil dipilih */
+#categories.hidden {
+  display: none !important;
+}
+
+/* ===== Dashboard Ibu Bapa ===== */
+
+.parent-dashboard-link {
+  margin: 20px 0;
+}
+
+
+/* Dashboard Ibu Bapa - gaya kawaii */
+.parent-dashboard-link {
+  margin: 20px 0;
+}
+
+.parent-dashboard-button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 18px;
+  margin: 0;
+  background: linear-gradient(
+    120deg,
+    #fff0f6,
+    #f0eaff,
+    #e5f7ff
+  );
+  color: #59445b;
+  text-decoration: none;
+  border: 2px solid #ffffff;
+  border-radius: 26px;
+  box-shadow: 0 6px 18px #b99bdf35;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.parent-dashboard-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 22px #b99bdf45;
+}
+
+.parent-dashboard-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  background: #ffffffb8;
+  border-radius: 18px;
+  font-size: 32px;
+}
+
+.parent-dashboard-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.parent-dashboard-text strong,
+.parent-dashboard-text small {
+  display: block;
+}
+
+.parent-dashboard-text strong {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.parent-dashboard-text small {
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #786b91;
+}
+
+.parent-dashboard-arrow {
+  font-size: 24px;
+  color: #9879d4;
+  flex-shrink: 0;
+}
+
+
+/* Hiasan kawaii My Little Stars */
+
+.kawaii-decoration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 18px 0 24px;
+  padding: 14px;
+  background: #ffffff70;
+  border: 2px solid #ffffffb8;
+  border-radius: 28px;
+  box-shadow: 0 5px 18px #b49bff20;
+}
+
+.kawaii-decoration span {
+  display: inline-block;
+  font-size: 34px;
+  filter: drop-shadow(0 3px 3px #7656a620);
+  animation: kawaiiFloat 2.5s ease-in-out infinite;
+}
+
+.kawaii-decoration span:nth-child(even) {
+  animation-delay: 0.5s;
+}
+
+@keyframes kawaiiFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Avatar kawaii untuk profil anak */
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    #ffe4ef,
+    #eee5ff,
+    #e0f6ff
+  );
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 12px #b49bff35;
+  font-size: 42px;
+  transition: transform 0.2s ease;
+}
+
+.profile:hover .avatar {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+/* Kilauan kecil pada background */
+body {
+  background-image:
+    radial-gradient(circle at 12% 18%, #ffffffb8 0 3px, transparent 4px),
+    radial-gradient(circle at 88% 25%, #ffffffb8 0 4px, transparent 5px),
+    radial-gradient(circle at 18% 75%, #ffffffa8 0 3px, transparent 4px),
+    radial-gradient(circle at 85% 82%, #ffffffb8 0 3px, transparent 4px),
+    linear-gradient(
+      135deg,
+      #fff0f6 0%,
+      #f1eaff 35%,
+      #e8f7ff 70%,
+      #fff6df 100%
+    );
+  background-attachment: fixed;
+}
+
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>🌟 My Little Stars 🌟</h1>
+    
+    <div class="kawaii-decoration">
+    <span>☁️</span>
+    <span>🌈</span>
+    <span>☀️</span>
+    <span>⭐</span>
+    <span>☁️</span>
+    </div>
+    
+    <div class="parent-dashboard-link">
+    <a href="ibu-bapa.html" class="parent-dashboard-button">
+        <span class="parent-dashboard-icon">👨‍👩‍👧</span>
+        <span class="parent-dashboard-text">
+        <strong>Dashboard Ibu Bapa</strong>
+        <small>Pantau rutin dan bintang anak</small>
+        </span>
+        <span class="parent-dashboard-arrow">➜</span>
+    </a>
+    </div>
+
+    <p class="subtitle">
+      Ruang istimewa untuk anak belajar rutin harian!
+    </p>
+
+    
+    <section id="registration" class="registration-panel hidden">
+      <h2>Daftar Anak 👧🧒</h2>
+
+      <form id="registerForm">
+        <label for="childName">Nama anak</label>
+        <input
+          id="childName"
+          type="text"
+          placeholder="Contoh: Aisyah"
+          required
+          maxlength="40"
+        >
+
+        <label for="childAge">Umur anak</label>
+        <select id="childAge" required>
+          <option value="">Pilih umur</option>
+          <option value="2">2 tahun</option>
+          <option value="3">3 tahun</option>
+          <option value="4">4 tahun</option>
+          <option value="5">5 tahun</option>
+          <option value="6">6 tahun</option>
+          <option value="7">7 tahun</option>
+          <option value="8">8 tahun</option>
+          <option value="9">9 tahun</option>
+          <option value="10">10 tahun</option>
+          <option value="11">11 tahun</option>
+          <option value="12">12 tahun</option>
+        </select>
+
+        <label for="childGender">Jantina</label>
+        <select id="childGender" required>
+          <option value="">Pilih jantina</option>
+          <option value="lelaki">Lelaki</option>
+          <option value="perempuan">Perempuan</option>
+        </select>
+
+        <button type="submit">💖 Daftar Anak</button>
+      </form>
+
+      <p id="message" role="status"></p>
+    </section>
+
+    <div class="register-action">
+    <button
+        type="button"
+        id="showRegistrationButton"
+        onclick="document.getElementById('registration').classList.toggle('hidden')"
+    >
+        ＋ Daftar Anak
+    </button>
+    </div>
+
+    <section id="profiles">
+      <h2>Profil Anak Saya ⭐</h2>
+      <div id="profileList"></div>
+    </section>
+  </main>
+
+  <script>
+    const STORAGE_KEY = "myLittleStarsChildren";
+
+    let children = [];
+
+    try {
+      const saved = JSON.parse(
+        localStorage.getItem(STORAGE_KEY) || "[]"
+      );
+
+      if (Array.isArray(saved)) {
+        children = saved.filter(child =>
+          child &&
+          typeof child.id === "string" &&
+          typeof child.name === "string" &&
+          typeof child.age === "number" &&
+          ["lelaki", "perempuan"].includes(child.gender)
+        );
+      }
+    } catch (error) {
+      children = [];
+    }
+
+    const form = document.getElementById("registerForm");
+    const nameInput = document.getElementById("childName");
+    const ageInput = document.getElementById("childAge");
+    const genderInput = document.getElementById("childGender");
+    const profileList = document.getElementById("profileList");
+    const message = document.getElementById("message");
+
+    function saveChildren() {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(children)
+      );
+    }
+
+    function renderProfiles() {
+      profileList.innerHTML = "";
+
+      if (children.length === 0) {
+        profileList.textContent =
+          "Belum ada profil. Daftarkan anak di atas dahulu.";
+        return;
+      }
+
+      children.forEach(function(child) {
+        const card = document.createElement("div");
+        card.className = "profile";
+        card.tabIndex = 0;
+        card.setAttribute("role", "button");
+        card.setAttribute(
+          "aria-label",
+          "Pilih profil " + child.name
+        );
+
+        const avatar = document.createElement("div");
+        avatar.className = "avatar";
+        avatar.textContent =
+          child.gender === "perempuan" ? "👧" : "🧒";
+
+        const name = document.createElement("h3");
+        name.textContent = child.name;
+
+        const details = document.createElement("p");
+        details.textContent = child.age + " tahun";   
+        const starKeys = [
+        "myLittleStars_rutinPagi_",
+        "myLittleStars_rutinTengahHari_",
+        "myLittleStars_rutinPetang_",
+        "myLittleStars_rutinMalam_"
+        ];
+
+        let totalStars = 0;
+
+        starKeys.forEach(function(key) {
+        try {
+            const progress = JSON.parse(
+            localStorage.getItem(key + child.id) || "[]"
+            );
+
+            totalStars += progress.filter(function(done) {
+            return done === true;
+            }).length;
+        } catch (error) {
+            console.log("Rekod bintang tidak dapat dibaca.");
+        }
+        });
+
+        const stars = document.createElement("p");
+        stars.textContent = "⭐ Jumlah bintang: " + totalStars;
+        stars.style.fontWeight = "bold";
+        stars.style.color = "#d779a5";
+
+        const hint = document.createElement("p");
+        hint.textContent = "Tekan untuk masuk ⭐";
+
+        card.append(avatar, name, details, stars, hint);
+
+        function openProfile() {
+          localStorage.setItem(
+            "myLittleStarsActiveChild",
+            child.id
+          );
+
+          
+if ("speechSynthesis" in window) {
+  window.speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(
+        "Selamat datang, " + child.name + "!"
+    );
+
+    speech.lang = "ms-MY";
+    speech.rate = 0.85;
+    speech.volume = 1;
+
+    const voices = window.speechSynthesis.getVoices();
+
+    const malayVoice = voices.find(function(voice) {
+        return voice.lang.toLowerCase().startsWith("ms");
+    });
+
+    if (malayVoice) {
+        speech.voice = malayVoice;
+    }
+
+    window.speechSynthesis.speak(speech);
+    }
+          
+    message.textContent =
+    "Selamat datang, " + child.name + "! 🌟";
+
+    document.getElementById("profiles").classList.add("hidden");
+    document.getElementById("registration").classList.add("hidden");
+    document.querySelector(".register-action").classList.add("hidden");
+
+    showCategories(child);
+
+        }
+
+        card.addEventListener("click", openProfile);
+
+        card.addEventListener("keydown", function(event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openProfile();
+          }
+        });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "delete-button";
+        deleteButton.textContent =
+          "Padam profil " + child.name;
+
+        deleteButton.addEventListener("click", function(event) {
+          event.stopPropagation();
+
+          const confirmed = confirm(
+            "Padam profil " + child.name + "?"
+          );
+
+          if (!confirmed) return;
+
+          children = children.filter(item => item.id !== child.id);
+          saveChildren();
+
+          if (
+            localStorage.getItem("myLittleStarsActiveChild") === child.id
+          ) {
+            localStorage.removeItem("myLittleStarsActiveChild");
+          }
+
+          renderProfiles();
+          message.textContent = "Profil telah dipadam.";
+        });
+
+        profileList.append(card, deleteButton);
+      });
+    }
+
+function showCategories(child) {
+  let categorySection = document.getElementById("categories");
+
+  if (!categorySection) {
+    categorySection = document.createElement("section");
+    categorySection.id = "categories";
+
+    categorySection.innerHTML = `
+      <button
+        id="homeButton"
+        onclick="showHomePage()"
+        aria-label="Home Page"
+        title="Home Page"
+        style="
+          grid-column:1 / -1;
+          justify-self:start;
+          width:44px;
+          min-height:44px;
+          padding:8px;
+          margin:0 0 4px;
+          background:#f0e5ff;
+          color:#7656a6;
+          border:1px solid #dfcdf6;
+          border-radius:14px;
+          font-size:22px;
+        ">
+        🏠
+      </button>
+
+      <h2>Pilih Rutin Kamu 🌈</h2>
+      <p class="subtitle">Pilih aktiviti yang ingin dibuat.</p>
+
+      <button data-page="pages/rutin-pagi.html">
+        🌞 Rutin Pagi
+      </button>
+
+      <button data-page="pages/rutin-tengah-hari.html">
+        🌤️ Rutin Tengah Hari
+      </button>
+
+      <button data-page="pages/rutin-petang.html">
+        🌈 Rutin Petang
+      </button>
+
+      <button data-page="pages/rutin-malam.html">
+        🌙 Rutin Malam
+      </button>
+
+      <button
+        id="rewardsButton"
+        onclick="window.location.href='ganjaran.html'">
+        🎁 Ganjaran Saya
+      </button>
+    `;
+
+    document.querySelector(".container").append(categorySection);
+
+    categorySection.querySelectorAll("[data-page]").forEach(button => {
+      button.addEventListener("click", function() {
+        sessionStorage.setItem(
+          "myLittleStarsReturnToChildMenu",
+          "true"
+        );
+
+        window.location.href = button.dataset.page;
+      });
+    });
+  }
+
+  categorySection.classList.remove("hidden");
+  categorySection.scrollIntoView({ behavior: "smooth" });
+}
+    function showHomePage() {
+    document.getElementById("categories").classList.add("hidden");
+    document.getElementById("profiles").classList.remove("hidden");
+    document.getElementById("registration").classList.add("hidden");
+    document.querySelector(".register-action").classList.remove("hidden");
+
+    sessionStorage.removeItem("myLittleStarsReturnToChildMenu");
+    window.scrollTo(0, 0);
+    }
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = nameInput.value.trim();
+      const age = Number(ageInput.value);
+      const gender = genderInput.value;
+
+      if (!name || !age || !gender) {
+        message.textContent = "Sila lengkapkan semua maklumat.";
+        return;
+      }
+
+      if (children.length >= 3) {
+        message.textContent =
+          "Maksimum 3 profil anak. Padam profil lama jika mahu menggantikannya.";
+        return;
+      }
+
+      const child = {
+        id: Date.now().toString() + Math.random().toString(36).slice(2, 8),
+        name: name,
+        age: age,
+        gender: gender
+      };
+
+      children.push(child);
+      saveChildren();
+      renderProfiles();
+
+      form.reset();
+      message.textContent =
+        "Berjaya daftar " + child.name + "! 💖 Pilih profilnya di bawah.";
+    });
+
+    renderProfiles();
+    
+    // Pulihkan menu anak hanya apabila kembali dari halaman lain
+    const activeChildId = localStorage.getItem("myLittleStarsActiveChild");
+    const activeChild = children.find(child => child.id === activeChildId);
+    const returnToMenu = sessionStorage.getItem("myLittleStarsReturnToChildMenu");
+
+    if (activeChild && returnToMenu === "true") {
+    sessionStorage.removeItem("myLittleStarsReturnToChildMenu");
+
+    document.getElementById("profiles").classList.add("hidden");
+    document.getElementById("registration").classList.add("hidden");
+    document.querySelector(".register-action").classList.add("hidden");
+
+    showCategories(activeChild);
+    }
+  </script>
+</body>
+</html>

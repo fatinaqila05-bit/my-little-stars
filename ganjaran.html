@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganjaran Saya | My Little Stars</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #fff8f0;
+      color: #51445f;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    header {
+      text-align: center;
+      margin: 20px 0 25px;
+    }
+
+    h1 {
+      color: #8b65b5;
+    }
+
+    .back {
+      display: inline-block;
+      padding: 11px 16px;
+      border-radius: 12px;
+      background: #e8dcfa;
+      color: #62458a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      padding: 25px 15px;
+      text-align: center;
+      background: white;
+      border-radius: 22px;
+      box-shadow: 0 3px 12px #0000000a;
+    }
+
+    .big-star {
+      font-size: 60px;
+    }
+
+    .star-count {
+      font-size: 38px;
+      font-weight: bold;
+      color: #d69b24;
+      margin: 10px 0;
+    }
+
+    .section {
+      margin-top: 25px;
+    }
+
+    .collection {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 12px;
+    }
+
+    .item {
+      background: white;
+      border-radius: 17px;
+      padding: 18px 10px;
+      text-align: center;
+      border: 2px solid #eee7f4;
+    }
+
+    .item.unlocked {
+      background: #fff0c9;
+      border-color: #f2d47b;
+    }
+
+    .emoji {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .item p {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .status {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .empty {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      text-align: center;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    
+<a
+  class="back"
+  href="index.html"
+  aria-label="Home Page"
+  title="Home Page"
+  style="
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:44px;
+    height:44px;
+    padding:8px;
+    margin:10px 0 20px;
+    background:#f0e5ff;
+    color:#7656a6;
+    border:1px solid #dfcdf6;
+    border-radius:14px;
+    font-size:22px;
+    text-decoration:none;
+  ">🏠</a>
+
+
+    <header>
+      <h1>🎁 Ganjaran Saya</h1>
+      <p>Kumpul bintang dan jadilah Superstar!</p>
+    </header>
+
+    <section id="content"></section>
+  </main>
+
+  <script>
+    const content = document.getElementById("content");
+
+    const children = JSON.parse(
+      localStorage.getItem("myLittleStarsChildren") || "[]"
+    );
+
+    const activeId = localStorage.getItem("myLittleStarsActiveChild");
+
+    const child = children.find(
+      item => String(item.id) === String(activeId)
+    );
+
+    const routines = [
+      "myLittleStars_rutinPagi_",
+      "myLittleStars_rutinTengahHari_",
+      "myLittleStars_rutinPetang_",
+      "myLittleStars_rutinMalam_"
+    ];
+
+    const badges = [
+      {
+        stars: 10,
+        emoji: "🌟",
+        name: "Bintang Pertama",
+        description: "Kumpul 10 bintang"
+      },
+      {
+        stars: 20,
+        emoji: "🏅",
+        name: "Bintang Bersinar",
+        description: "Kumpul 20 bintang"
+      },
+      {
+        stars: 50,
+        emoji: "👑",
+        name: "Superstar",
+        description: "Kumpul 50 bintang"
+      }
+    ];
+
+    const rewards = [
+      {
+        stars: 10,
+        emoji: "🎨",
+        name: "Artis Cilik",
+        description: "Ganjaran pertama"
+      },
+      {
+        stars: 20,
+        emoji: "🧸",
+        name: "Sahabat Istimewa",
+        description: "Anda semakin rajin!"
+      },
+      {
+        stars: 50,
+        emoji: "🎁",
+        name: "Harta Karun",
+        description: "Ganjaran Superstar"
+      }
+    ];
+
+    function countCompleted(key) {
+      try {
+        const data = JSON.parse(
+          localStorage.getItem(key) || "[]"
+        );
+
+        if (Array.isArray(data)) {
+          return data.filter(item => item === true).length;
+        }
+
+        if (data && typeof data === "object") {
+          return Object.values(data).filter(
+            item => item === true
+          ).length;
+        }
+
+        return 0;
+      } catch (error) {
+        return 0;
+      }
+    }
+
+    function createCollectionItem(item, unlocked, description) {
+      const card = document.createElement("div");
+      card.className = unlocked ? "item unlocked" : "item";
+
+      const emoji = document.createElement("div");
+      emoji.className = "emoji";
+      emoji.textContent = unlocked ? item.emoji : "🔒";
+
+      const title = document.createElement("strong");
+      title.textContent = item.name;
+
+      const detail = document.createElement("p");
+      detail.textContent = description;
+
+      const status = document.createElement("div");
+      status.className = "status";
+      status.textContent = unlocked ? "DIBUKA! 🎉" : "BELUM DIBUKA";
+
+      card.append(emoji, title, detail, status);
+      return card;
+    }
+
+    if (!child) {
+      content.innerHTML = `
+        <div class="empty">
+          <h2>👋 Siapa yang sedang bermain?</h2>
+          <p>Kembali ke halaman utama dan pilih profil anak dahulu.</p>
+        </div>
+      `;
+    } else {
+      let totalStars = 0;
+
+      routines.forEach(prefix => {
+        totalStars += countCompleted(prefix + child.id);
+      });
+
+      const hero = document.createElement("section");
+      hero.className = "hero";
+
+      const greeting = document.createElement("h2");
+      greeting.textContent = "Hai, " + child.name + "! 💜";
+
+      const star = document.createElement("div");
+      star.className = "big-star";
+      star.textContent = "⭐";
+
+      const count = document.createElement("div");
+      count.className = "star-count";
+      count.textContent = totalStars;
+
+      const caption = document.createElement("p");
+      caption.textContent = "Bintang yang telah dikumpulkan";
+
+      hero.append(greeting, star, count, caption);
+      content.appendChild(hero);
+
+      const badgeHeading = document.createElement("h2");
+      badgeHeading.className = "section";
+      badgeHeading.textContent = "🏅 Lencana Saya";
+      content.appendChild(badgeHeading);
+
+      const badgeCollection = document.createElement("div");
+      badgeCollection.className = "collection";
+
+      badges.forEach(badge => {
+        badgeCollection.appendChild(
+          createCollectionItem(
+            badge,
+            totalStars >= badge.stars,
+            badge.description
+          )
+        );
+      });
+
+      content.appendChild(badgeCollection);
+
+      const rewardHeading = document.createElement("h2");
+      rewardHeading.className = "section";
+      rewardHeading.textContent = "🎁 Kotak Harta Karun";
+      content.appendChild(rewardHeading);
+
+      const rewardCollection = document.createElement("div");
+      rewardCollection.className = "collection";
+
+      rewards.forEach(reward => {
+        rewardCollection.appendChild(
+          createCollectionItem(
+            reward,
+            totalStars >= reward.stars,
+            reward.description
+          )
+        );
+      });
+
+      content.appendChild(rewardCollection);
+    }
+  </script>
+</body>
+</html>
